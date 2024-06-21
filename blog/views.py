@@ -8,4 +8,15 @@ from .models import Post
 
 
 class PostList(generic.ListView):
-    model = Post
+    # first way of HTML
+    #model = Post
+
+    # Second way of showing HTML page
+    #queryset = Post.objects.all()
+    #queryset = Post.objects.filter(author=2)
+    # we can use another method like order_by
+    queryset = Post.objects.all().order_by("created_on") # if we want to order from most recent to oldest we use - sign before the created_on
+
+    # showing only posts which are published 
+    queryset = Post.objects.filter(status=1) 
+    template_name = "post_list.html"
