@@ -1,6 +1,6 @@
 
 #from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .models import Post
 
@@ -26,9 +26,9 @@ class PostList(generic.ListView):
     paginate_by = 6
 
 
-def post_details(request, slug):
+def post_detail(request, slug):
     """
-    Display an indvidual :model: 'blog.Post'.
+    Display an individual :model: 'blog.Post'.
     **Context**
 
     ''post''
@@ -39,8 +39,4 @@ def post_details(request, slug):
     """
     queryset = Post.objects.filter(status = 1)
     post = get_object_or_404(queryset,slug=slug)
-    return(
-        request,
-        "blog/post_detail.html",
-        {"post":post},
-    )
+    return(request, "blog/post_detail.html",{"post":post},)
