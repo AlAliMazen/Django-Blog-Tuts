@@ -39,4 +39,4 @@ def post_detail(request, slug):
     """
     queryset = Post.objects.filter(status = 1)
     post = get_object_or_404(queryset,slug=slug)
-    return render(request, "blog/post_detail.html", {"post": post,"coder":"Mazen Al Ali"},)
+    return render(request, "blog/post_detail.html", {"post": post},)
