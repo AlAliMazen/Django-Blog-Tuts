@@ -15,3 +15,12 @@ class About(models.Model):
      # Methods (functions inside classes) must always be written under the Meta
     def __str__(self):
         return f"{self.title} | written by {self.title}"
+
+class CollaborateRequest(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    message = models.TextField()
+    read = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Collaboration request from {self.name}"
